@@ -1,0 +1,24 @@
+.Install Python package manager Poetry
+----
+https://github.com/weipingc/poetry
+curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
+
+in ~/.zshrc, add the following line:
+export PATH="$HOME/.poetry/bin:$PATH"
+----
+
+.Try it out
+----
+➜  pythonLab git:(master) ✗ mkdir tryPoetry
+➜  pythonLab git:(master) ✗ cd tryPoetry
+➜  tryPoetry git:(master) ✗ poetry new hellopoetry
+➜  tryPoetry git:(master) ✗ vi pyproject.toml
+Add the following lines:
+[tool.poetry.scripts]
+hello = "hellopoetry.console:main"
+
+➜  tryPoetry git:(master) ✗ poetry run hello
+[Application.__init__]
+[Application.run] Hi App by Poetry!
+➜  tryPoetry git:(master) ✗
+
