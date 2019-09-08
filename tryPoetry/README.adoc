@@ -10,8 +10,19 @@ export PATH="$HOME/.poetry/bin:$PATH"
 .Try it out
 ----
 ➜  pythonLab git:(master) ✗ mkdir tryPoetry
+pyenv versions
 ➜  pythonLab git:(master) ✗ cd tryPoetry
 ➜  tryPoetry git:(master) ✗ poetry new hellopoetry
+➜  tryPoetry git:(master) ✗ poetry add numpy
+➜  tryPoetry git:(master) ✗ poetry install
+➜  tryPoetry git:(master) ✗ pyenv versions
+  system
+  3.4.10
+* 3.7.4 (set by /Users/Wei/.pyenv/version)
+➜  tryPoetry git:(master) ✗ ls -d /Users/Wei/Library/Caches/pypoetry/virtualenvs/hellopoetry-py3.7/lib/python3.7/site-packages/numpy*
+/Users/Wei/Library/Caches/pypoetry/virtualenvs/hellopoetry-py3.7/lib/python3.7/site-packages/numpy
+/Users/Wei/Library/Caches/pypoetry/virtualenvs/hellopoetry-py3.7/lib/python3.7/site-packages/numpy-1.17.2.dist-info
+
 ➜  tryPoetry git:(master) ✗ vi pyproject.toml
 Add the following lines:
 [tool.poetry.scripts]
