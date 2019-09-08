@@ -17,8 +17,10 @@ Add the following lines:
 [tool.poetry.scripts]
 hello = "hellopoetry.console:main"
 
+(The following line will cause Poetry to run
+  python -c "import hellopoetry.console as con; con.main()"
+with all dependency specified in pyproject.toml)
 ➜  tryPoetry git:(master) ✗ poetry run hello
 [Application.__init__]
 [Application.run] Hi App by Poetry!
 ➜  tryPoetry git:(master) ✗
-
