@@ -8,8 +8,9 @@ class Application():
 
     def run(self):
         print("[Application.run] Hi App by Poetry!")
+        print("sys.path=", sys.path)
+        print()
+        print("numpy module file=", imp.find_module("numpy"))
         fiveZeros = np.zeros(5)
         print("fiveZeros=", fiveZeros)
-        print("sys.path=", sys.path)
-        print("numpy module file=", imp.find_module("numpy"))
 
