@@ -9,29 +9,42 @@ export PATH="$HOME/.poetry/bin:$PATH"
 
 .Try it out
 ----
-➜  pythonLab git:(master) ✗ mkdir tryPoetry
+➜  /labs/github/pyLab git:(master) ✗ mkdir tryPoetry
 pyenv versions
-➜  pythonLab git:(master) ✗ cd tryPoetry
-➜  tryPoetry git:(master) ✗ poetry new hellopoetry
-➜  tryPoetry git:(master) ✗ poetry add numpy
-➜  tryPoetry git:(master) ✗ poetry install
-➜  tryPoetry git:(master) ✗ pyenv versions
+➜  /labs/github/pyLab git:(master) ✗ cd tryPoetry
+➜  github/pyLab/tryPoetry git:(master) ✗ poetry new hellopoetry
+➜  github/pyLab/tryPoetry git:(master) ✗ poetry add numpy
+➜  github/pyLab/tryPoetry git:(master) ✗ poetry install
+➜  github/pyLab/tryPoetry git:(master) ✗ pyenv versions
   system
   3.4.10
 * 3.7.4 (set by /Users/Wei/.pyenv/version)
-➜  tryPoetry git:(master) ✗ ls -d /Users/Wei/Library/Caches/pypoetry/virtualenvs/hellopoetry-py3.7/lib/python3.7/site-packages/numpy*
+➜  github/pyLab/tryPoetry git:(master) ✗ ls -d /Users/Wei/Library/Caches/pypoetry/virtualenvs/hellopoetry-py3.7/lib/python3.7/site-packages/numpy*
 /Users/Wei/Library/Caches/pypoetry/virtualenvs/hellopoetry-py3.7/lib/python3.7/site-packages/numpy
 /Users/Wei/Library/Caches/pypoetry/virtualenvs/hellopoetry-py3.7/lib/python3.7/site-packages/numpy-1.17.2.dist-info
 
-➜  tryPoetry git:(master) ✗ vi pyproject.toml
+➜  github/pyLab/tryPoetry git:(master) ✗ vi pyproject.toml
 Add the following lines:
 [tool.poetry.scripts]
 hello = "hellopoetry.console:main"
 
 (The following line will cause Poetry to run
-  python -c "import hellopoetry.console as con; con.main()"
+  python -c "from hellopoetry.console import main; main()"
 with all dependency specified in pyproject.toml)
 ➜  tryPoetry git:(master) ✗ poetry run hello
 [Application.__init__]
 [Application.run] Hi App by Poetry!
-➜  tryPoetry git:(master) ✗
+➜  github/pyLab/tryPoetry git:(master) ✗ mkdir -p newpkg/subpkg
+➜  github/pyLab/tryPoetry git:(master) ✗ cat > newpkg/subpkg/module1.py
+def test():
+    print("Hello new package")
+^D
+➜  github/pyLab/tryPoetry git:(master) ✗ vi pyproject.toml
+Add the following line:
+hello_newpkg = "newpkg.subpkg.module1:test"
+➜  github/pyLab/tryPoetry git:(master) ✗ 
+(The following line will cause Poetry to run
+  python -c "from  newpkg.subpkg.module1 import test; test()"
+)
+➜  github/pyLab/tryPoetry git:(master) ✗ poetry run hello_newpkg
+Hello new package
